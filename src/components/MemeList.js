@@ -1,17 +1,38 @@
 import React from "react";
+import { CardColumns, Card } from "react-bootstrap";
 
 const BACKEND_API = process.env.REACT_APP_BACKEND_API;
 
-const MemeList = ({ memes }) => {
+const MemeList = ({ memes, showDetail }) => {
   return (
-    <div>
-      <h1>All Memes</h1>
-      {memes.map((m) => (
-        <div key={m.id}>
-          <img src={`${BACKEND_API}${m.outputMemePath.slice(6)}`} alt="meme" />
-        </div>
-      ))}
-    </div>
+    <>
+      {memes.length > 0 ? (
+        <CardColumns>
+          <ul className="list-unstyled">
+            {memes.map((meme) => (
+              <MemeCard meme={meme} showDetail={showDetail} key={meme.id} />
+            ))}
+          </ul>
+        </CardColumns>
+      ) : (
+        <p className="text-center">There are no memes</p>
+      )}
+    </>
+  );
+};
+
+const MemeCard = ({ meme, showDetail }) => {
+  return (
+    <Card
+      border="primary"
+      className="mouse-hover"
+      onClick={() => showDetail(meme)}
+    >
+      <Card.Img
+        variant="top"
+        src={`${BACKEND_API}${meme.outputMemePath.slice(6)}`}
+      />
+    </Card>
   );
 };
 
