@@ -1,4 +1,4 @@
-import * as types from "../constants/meme.constants";
+import * as types from "redux/constants/meme.constants";
 import api from "redux/api";
 
 const memesRequest = (pageNum) => async (dispatch) => {
