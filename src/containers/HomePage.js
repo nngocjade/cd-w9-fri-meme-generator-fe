@@ -30,7 +30,7 @@ const HomePage = () => {
   return (
     <div>
       <MemeUploadBar onUpload={handleUpload} />
-      <MemeList memes={memes} />
+      {/* <MemeList memes={memes} /> */}
     </div>
   );
 };
