@@ -1,8 +1,10 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
+const BACKEND_API = process.env.REACT_APP_BACKEND_API;
+
 const api = axios.create({
-  baseURL: process.env.REACT_APP_BACKEND_API + "/api",
+  baseURL: `${BACKEND_API}/api`,
   headers: {
     "Content-Type": "application/json",
   },

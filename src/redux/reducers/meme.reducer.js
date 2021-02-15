@@ -8,18 +8,19 @@ const initialState = {
 
 const memeReducer = (state = initialState, action) => {
   const { type, payload } = action;
+
   switch (type) {
     case types.GET_MEMES_REQUEST:
       return { ...state, loading: true };
     case types.GET_MEMES_SUCCESS:
+      console.log("payload ", payload);
       return {
         ...state,
-        memes: payload.memes,
-        totalPageNum: payload.totalPages,
+        memes: payload,
+        totalPageNum: payload,
         loading: false,
       };
     case types.GET_MEMES_FAILURE:
-      console.log(payload);
       return { ...state, loading: false };
     default:
       return state;
