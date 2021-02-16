@@ -6,8 +6,8 @@ const memesRequest = (pageNum) => async (dispatch) => {
   try {
     const res = await api.get(`/memes?page=${pageNum}&perPage=9`);
     console.log("api response: ", res);
-    console.log("res.data.data:", res.data.data);
-    dispatch({ type: types.GET_MEMES_SUCCESS, payload: res.data.data });
+    console.log("res.data:", res.data);
+    dispatch({ type: types.GET_MEMES_SUCCESS, payload: res.data });
   } catch (error) {
     dispatch({ type: types.GET_MEMES_FAILURE, payload: error });
   }

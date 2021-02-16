@@ -19,23 +19,24 @@ const PaginationBar = ({ pageNum, setPageNum, totalPageNum, loading }) => {
       setPageNum(totalPageNum);
     }
   };
-
   const handleClickOnNext = () => {
     if (pageNum < totalPageNum && !loading) {
       setPageNum((num) => num + 1);
     }
   };
-
   const handleClickOnPrev = () => {
     if (pageNum > 1 && !loading) {
       setPageNum((num) => num - 1);
     }
   };
+
   return (
     <Pagination className="justify-content-center" disabled={loading}>
       <Pagination.First disabled={pageNum === 1} onClick={handleClickOnFirst} />
       <Pagination.Prev disabled={pageNum === 1} onClick={handleClickOnPrev} />
-      <Pagination.Item active={pageNum === 1} onClick={() => handleClick(1)} />
+      <Pagination.Item active={pageNum === 1} onClick={() => handleClick(1)}>
+        {1}
+      </Pagination.Item>
 
       {pageNum - 1 > 1 && <Pagination.Ellipsis />}
       {pageNum > 1 && pageNum < totalPageNum && (

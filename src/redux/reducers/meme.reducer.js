@@ -13,11 +13,12 @@ const memeReducer = (state = initialState, action) => {
     case types.GET_MEMES_REQUEST:
       return { ...state, loading: true };
     case types.GET_MEMES_SUCCESS:
-      console.log("payload ", payload);
+      console.log("payload.data ", payload.data);
+      console.log("payload.totalPages ", payload.totaPages);
       return {
         ...state,
-        memes: payload,
-        totalPageNum: payload,
+        memes: payload.data,
+        totalPageNum: payload.totalPages,
         loading: false,
       };
     case types.GET_MEMES_FAILURE:
