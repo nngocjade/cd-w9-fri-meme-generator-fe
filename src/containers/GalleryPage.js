@@ -12,7 +12,8 @@ const GalleryPage = () => {
   const loading = useSelector((state) => state.meme.loading);
   const totalPageNum = useSelector((state) => state.meme.totalPageNum);
   const memes = useSelector((state) => state.meme.memes);
-
+  console.log("totalPageNum: ", totalPageNum);
+  console.log("memes: ", memes);
   useEffect(() => {
     dispatch(memeActions.memesRequest(pageNum));
   }, [dispatch, pageNum]);
