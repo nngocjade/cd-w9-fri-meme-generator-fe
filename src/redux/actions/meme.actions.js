@@ -2,6 +2,8 @@ import * as types from "../constants/meme.constants";
 import api from "../api.js";
 import { toast } from "react-toastify";
 
+// ================= MEMES REQUEST ========================
+
 const memesRequest = (pageNum) => async (dispatch) => {
   dispatch({ type: types.GET_MEMES_REQUEST, payload: null });
   try {
@@ -13,6 +15,8 @@ const memesRequest = (pageNum) => async (dispatch) => {
     dispatch({ type: types.GET_MEMES_FAILURE, payload: error });
   }
 };
+
+//  ================= CREATE MEMES REQUEST ====================
 
 const createMemeRequest = (image) => async (dispatch) => {
   dispatch({ type: types.CREATE_MEME_REQUEST, payload: null });
@@ -31,13 +35,32 @@ const createMemeRequest = (image) => async (dispatch) => {
   }
 };
 
+// =================== SET SELECTED MEME =======================
+
 const setSelectedMeme = (meme) => ({
   type: types.SET_SELECTED_MEME,
   payload: meme,
 });
 
+// ================== UPDATE MEME REQUEST ======================
+
+const updateMemeRequest = (texts, memeId) => async (dispatch) => {
+  dispatch({ type: types.UPDATE_MEME_REQUEST, payload: null });
+  try {
+    const body = { texts };
+    const res = await api.put(`/memes/${memeId}`, body);
+    dispatch({
+      type: types.UPDATE_MEME_SUCCESS,
+      payload: res.data.data,
+    });
+  } catch (error) {
+    dispatch({ type: types.UPDATE_MEME_FAILURE, payload: error });
+  }
+};
+
 export const memeActions = {
   memesRequest,
   createMemeRequest,
   setSelectedMeme,
+  updateMemeRequest,
 };
