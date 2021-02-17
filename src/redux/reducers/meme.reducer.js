@@ -4,6 +4,7 @@ const initialState = {
   memes: [],
   totalPageNum: 1,
   loading: false,
+  selectedMeme: [],
 };
 
 const memeReducer = (state = initialState, action) => {
@@ -40,6 +41,7 @@ const memeReducer = (state = initialState, action) => {
       };
     case types.CREATE_MEME_FAILURE:
       return { ...state, loading: false };
+
     case types.SET_SELECTED_MEME:
       return { ...state, selectedMeme: payload };
     default:

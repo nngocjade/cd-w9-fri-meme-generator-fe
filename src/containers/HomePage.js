@@ -18,7 +18,7 @@ const HomePage = () => {
       uploadedImage: files[0],
       localImageUrl: window.URL.createObjectURL(files[0]),
     };
-    dispatch(memeActions.selectedMeme(meme));
+    dispatch(memeActions.setSelectedMeme(meme));
   };
 
   const handleSubmitImage = () => {
